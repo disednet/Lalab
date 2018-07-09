@@ -386,7 +386,7 @@ const std::string d_ILUnt = "ILUnt";
 int main()
 {
 	const int max_it = 5000;
-	const double tolerance = 1.e-4;
+	const double tolerance = 1.e-6;
 	MatrixCRS matr;
 	std::vector<double> res;
 	std::vector<double> x;
@@ -400,6 +400,7 @@ int main()
  	GmRes(matr, res, x, max_it, tolerance);
  	QMR(matr, res, x, max_it, tolerance);
  	LSCG(matr, res, x, max_it, tolerance);
+/*
 	Prec::CG_PREC<DiagonalPrec>(matr, res, x, max_it, tolerance, d_DIAGONAL);
 	Prec::CG_PREC<ILDLTPrec>(matr, res, x, max_it, tolerance, d_ILDLT);
 	//Prec::CG_PREC<ILDLTTPrec>(matr, res, x, max_it, tolerance, d_ILDLTT, 5, 1.0e-16);
@@ -427,6 +428,7 @@ int main()
 	Prec::QMR_PREC<ILU0Prec>(matr, res, x, max_it, tolerance, d_ILU0);
 	Prec::QMR_PREC<ILUnpPrec>(matr, res, x, max_it, tolerance, d_ILUn, 2, 1.0e-10);
 	//Prec::QMR_PREC<ILUnpPrec>(matr, res, x, max_it, tolerance, d_ILUnt, 2, 1.0e-20);
+	*/
     return 0;
 }
 

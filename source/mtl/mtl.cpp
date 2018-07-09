@@ -227,48 +227,48 @@ int main()
 	Solve<TFQMRSolver>(matr, res, x, max_it, tol, TFQMR_SOLVER_NAME);
 
 	//////////////////////////////////////////////////////////////////////////
-	const int t = 2;
-	const double ilut_threshold = 1.0e-15;
+	const int t = 1;
+	const double ilut_threshold = 1.0e-20;
 	const int gmres_restart = 50;
 	SolveWithPrec<itl::cg_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::cg_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::cg_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::cg_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+ 	SolveWithPrec<itl::cg_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
+// 	SolveWithPrec<itl::cg_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+ 	SolveWithPrec<itl::cg_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
 
-	SolveWithPrec<itl::bicg_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::bicg_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::bicg_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::bicg_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+ 	SolveWithPrec<itl::bicg_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, BiCG_SOLVER_NAME, DIAG_PREC);
+ 	SolveWithPrec<itl::bicg_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, BiCG_SOLVER_NAME, ILU0_PREC);
+// 	SolveWithPrec<itl::bicg_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, BiCG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+ 	SolveWithPrec<itl::bicg_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, BiCG_SOLVER_NAME, IC_PREC);
+ 
+	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, BiCGSTAB_SOLVER_NAME, DIAG_PREC);
+	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, BiCGSTAB_SOLVER_NAME, ILU0_PREC);
+//	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, BiCGSTAB_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, BiCGSTAB_SOLVER_NAME, IC_PREC);
 
-	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::bicgstab_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
-
-	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, BiCGSTAB2_SOLVER_NAME, DIAG_PREC);
+	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, BiCGSTAB2_SOLVER_NAME, ILU0_PREC);
+//	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, BiCGSTAB2_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+	SolveWithPrec<itl::bicgstab_2_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, BiCGSTAB2_SOLVER_NAME, IC_PREC);
 	
-	SolveWithPrec<itl::cgs_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::cgs_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::cgs_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::cgs_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+	SolveWithPrec<itl::cgs_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CGS_SOLVER_NAME, DIAG_PREC);
+	SolveWithPrec<itl::cgs_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CGS_SOLVER_NAME, ILU0_PREC);
+//	SolveWithPrec<itl::cgs_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CGS_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+	SolveWithPrec<itl::cgs_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CGS_SOLVER_NAME, IC_PREC);
 	
 	GmResPrec<DiagPrec>(matr, res, x, max_it, tol, gmres_restart, DIAG_PREC);
  	GmResPrec<ILU0Prec>(matr, res, x, max_it, tol, gmres_restart, ILU0_PREC);
- 	GmResPrec<ILUtPrec>(matr, res, x, max_it, tol, gmres_restart, ILUt_PREC, t, ilut_threshold);
+// 	GmResPrec<ILUtPrec>(matr, res, x, max_it, tol, gmres_restart, ILUt_PREC, t, ilut_threshold);
  	GmResPrec<ICPrec>(matr, res, x, max_it, tol, gmres_restart, IC_PREC);
 
-	SolveWithPrec<itl::qmr_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::qmr_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::qmr_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::qmr_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+	SolveWithPrec<itl::qmr_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, QMR_SOLVER_NAME, DIAG_PREC);
+	SolveWithPrec<itl::qmr_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, QMR_SOLVER_NAME, ILU0_PREC);
+//	SolveWithPrec<itl::qmr_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, QMR_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+	SolveWithPrec<itl::qmr_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, QMR_SOLVER_NAME, IC_PREC);
 
-	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, DIAG_PREC);
-	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILU0_PREC);
-	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
-	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, CG_SOLVER_NAME, IC_PREC);
+	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, DiagPrec>, DiagPrec>(matr, res, x, max_it, tol, TFQMR_SOLVER_NAME, DIAG_PREC);
+	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ILU0Prec>, ILU0Prec>(matr, res, x, max_it, tol, TFQMR_SOLVER_NAME, ILU0_PREC);
+//	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ILUtPrec>, ILUtPrec>(matr, res, x, max_it, tol, TFQMR_SOLVER_NAME, ILUt_PREC, t, ilut_threshold);
+	SolveWithPrec<itl::tfqmr_solver<CrsMatrix, ICPrec>, ICPrec>(matr, res, x, max_it, tol, TFQMR_SOLVER_NAME, IC_PREC);
     return 0;
 }
 
